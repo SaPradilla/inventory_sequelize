@@ -45,23 +45,11 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      id_adjustment: {
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'adjustments',
-          key:'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-      },
       type_transaction: {
-        type: Sequelize.ENUM("purchase,sale,refund,adjustment")
+        type: Sequelize.ENUM("purchase","sale","refund")
       },
       quantity: {
         type: Sequelize.INTEGER
-      },
-      date_transaction: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

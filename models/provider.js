@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   provider.init({
     name_brand: DataTypes.STRING,
     address: DataTypes.STRING,
-    phone: DataTypes.INTEGER
+    phone: DataTypes.INTEGER(11)
   }, {
     sequelize,
     modelName: 'provider',

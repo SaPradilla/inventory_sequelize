@@ -10,11 +10,18 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      transaction.belongsTo(models.product)
-      transaction.belongsTo(models.purchase)
-      transaction.belongsTo(models.refund)
-      transaction.belongsTo(models.sale)
-      transaction.belongsTo(models.adjustment)
+      transaction.belongsTo(models.product,{
+        foreignKey: 'id_product'
+      })
+      transaction.belongsTo(models.purchase,{
+        foreignKey: 'id_purchase'
+      })
+      transaction.belongsTo(models.refund,{
+        foreignKey: 'id_refund'
+      })
+      transaction.belongsTo(models.sale,{
+        foreignKey: 'id_sale'
+      })
     }
   }
   transaction.init({
@@ -22,10 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     id_purchase: DataTypes.INTEGER,
     id_refund: DataTypes.INTEGER,
     id_sale: DataTypes.INTEGER,
-    id_adjustment: DataTypes.INTEGER,
-    type_transaction: DataTypes.ENUM("purchase,sale,refund,adjustment"),
-    quantity: DataTypes.INTEGER,
-    date_transaction: DataTypes.DATE
+    type_transaction: DataTypes.ENUM("purchase","sale","refund"),
+    quantity: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'transaction',

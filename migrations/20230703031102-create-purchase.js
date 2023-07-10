@@ -19,9 +19,6 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      date_purchase: {
-        type: Sequelize.DATE
-      },
       total_purchase: {
         type: Sequelize.INTEGER
       },

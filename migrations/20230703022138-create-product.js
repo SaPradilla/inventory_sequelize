@@ -13,26 +13,20 @@ module.exports = {
         type: Sequelize.STRING
       },
       lot_number: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(11)
       },
       expiration_date: {
         type: Sequelize.DATE
       },
       sales_price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(11)
       },
       purchase_price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(11)
       },
-      id_stock: {
+      stock: {
         allowNull:false,
-        type: Sequelize.INTEGER,
-        references:{
-          model:'stocks',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        type: Sequelize.INTEGER(15)
       },
       id_category: {
         allowNull: false,
@@ -64,19 +58,8 @@ module.exports = {
       }
     });
 
-    await queryInterface.addColumn('stocks','id_product',{
-      allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'products',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
-    });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn('stocks','id_product')
     await queryInterface.dropTable('products');
   }
 };

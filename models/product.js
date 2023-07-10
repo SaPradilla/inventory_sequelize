@@ -11,14 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
 
-      // 1:1 | stock
-      product.hasOne(models.stock,{
-        foreignKey:'id_stock'
-      })
+
       // 1:M relacion de pertencia | category
-      product.belongsTo(models.category)
+      product.belongsTo(models.category,{
+        foreignKey:'id_category'
+      })
       // 1:M relacion de pertencia | provider
-      product.belongsTo(models.provider)
+      product.belongsTo(models.provider,{
+        foreignKey:'id_provider'
+      })
       // 1: M | transaction
       product.hasMany(models.transaction,{
         foreignKey: 'id_product'
@@ -28,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   product.init({
     name: DataTypes.STRING,
-    lot_number: DataTypes.INTEGER,
+    lot_number: DataTypes.INTEGER(11),
     expiration_date: DataTypes.DATE,
-    sales_price: DataTypes.INTEGER,
-    purchase_price: DataTypes.INTEGER,
-    id_stock: DataTypes.INTEGER,
+    sales_price: DataTypes.INTEGER(11),
+    purchase_price: DataTypes.INTEGER(11),
+    stock: DataTypes.INTEGER(15),
     id_category: DataTypes.INTEGER,
     id_provider: DataTypes.INTEGER
   }, {

@@ -15,12 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_purchase'
       })
       // 1:M relacion de pertenecia | provider
-      purchase.belongsTo(models.provider)
+      purchase.belongsTo(models.provider,{
+        foreignKey: 'id_provider'
+        
+      })
     }
   }
   purchase.init({
     id_provider: DataTypes.INTEGER,
-    date_purchase: DataTypes.DATE,
     total_purchase: DataTypes.INTEGER
   }, {
     sequelize,

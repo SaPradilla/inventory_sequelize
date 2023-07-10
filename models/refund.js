@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
 
       // 1:M relacion de pertenencia || sale
-      refund.belongsTo(models.sale)
+      refund.belongsTo(models.sale,{
+
+        foreignKey: 'id_sale'
+      })
       // 1: M | transaction
       refund.hasMany(models.transaction,{
         foreignKey: 'id_refund'
@@ -21,9 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     client_name: DataTypes.STRING,
     client_phone: DataTypes.INTEGER,
     client_dni: DataTypes.INTEGER,
-    refund_date: DataTypes.DATE,
     refund_total: DataTypes.INTEGER,
-    reason_refund: DataTypes.STRING
+    refund_reason: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'refund',

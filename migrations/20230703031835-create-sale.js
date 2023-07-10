@@ -12,11 +12,11 @@ module.exports = {
       client_name: {
         type: Sequelize.STRING
       },
-      client_dni: {
+      client_phone: {
         type: Sequelize.INTEGER
       },
-      sale_date: {
-        type: Sequelize.DATE
+      client_dni: {
+        type: Sequelize.INTEGER
       },
       sale_total: {
         type: Sequelize.INTEGER

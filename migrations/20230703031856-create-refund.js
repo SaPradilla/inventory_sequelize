@@ -28,13 +28,10 @@ module.exports = {
       client_dni: {
         type: Sequelize.INTEGER
       },
-      refund_date: {
-        type: Sequelize.DATE
-      },
       refund_total: {
         type: Sequelize.INTEGER
       },
-      reason_retun: {
+      refund_reason: {
         type: Sequelize.STRING
       },
       createdAt: {
